@@ -1,16 +1,8 @@
+from app.core.llama_bootstrap import *  # noqa: F401
+
 from fastapi import FastAPI
-from app.core.config import settings
-from app.core.logging import setup_logging
+from app.api.routes import query
 
-logger = setup_logging(settings.log_level)
+app = FastAPI(title="Enterprise Knowledge AI")
 
-app = FastAPI(
-    title="Enterprise Knowledge AI",
-    version="0.1.0"
-)
-
-@app.get("/health")
-def health_check():
-    return {"status": "ok"}
-
-logger.info("Application started")
+app.include_router(query.router, prefix="/api")

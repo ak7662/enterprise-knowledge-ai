@@ -27,3 +27,14 @@ Query
   → Embed
   → Similarity search
   → Top-K chunks (with metadata)
+
+
+User Question
+   ↓
+Retriever (ChromaDB)
+   ↓
+Relevant Chunks
+   ↓
+Local LLM (Ollama)
+   ↓
+Grounded Answer + Sources
