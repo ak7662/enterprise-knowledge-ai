@@ -1,0 +1,18 @@
+fastapi
+uvicorn
+python-dotenv
+pydantic
+loguru
+
+# GenAI
+langchain
+llama-index
+openai
+anthropic
+
+# Vector DB
+chromadb
+
+# File handling
+pypdf
+python-docx
