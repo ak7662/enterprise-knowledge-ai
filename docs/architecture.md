@@ -16,3 +16,14 @@ A production-grade RAG system that allows users to upload enterprise documents a
 3. Vectors stored in ChromaDB
 4. User queries trigger RAG pipeline
 5. LLM answers with citations
+
+
+Documents
+  → Chunk
+  → Embed (local)
+  → ChromaDB (persisted)
+
+Query
+  → Embed
+  → Similarity search
+  → Top-K chunks (with metadata)
