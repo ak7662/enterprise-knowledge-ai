@@ -1,35 +1,21 @@
-from llama_index.core import VectorStoreIndex
 from llama_index.core.query_engine import RetrieverQueryEngine
-from llama_index.core.retrievers import VectorIndexRetriever
-from llama_index.core.postprocessor import SimilarityPostprocessor
+from llama_index.core.response_synthesizers import get_response_synthesizer
 
-from app.services.vector_store import get_storage_context
-from app.services.llm import get_llm
-from app.services.embeddings import get_embedding_model
+from app.rag.index import get_index
+from app.rag.prompts import qa_prompt  # wherever your prompt is
 
+def get_query_engine(collection_name: str):
+    index = get_index(collection_name)
 
-def get_query_engine(
-    collection_name: str,
-    similarity_top_k: int = 4,
-    similarity_cutoff: float = 0.7
-):
-    storage_context = get_storage_context(collection_name)
-
-    index = VectorStoreIndex.from_vector_store(
-        vector_store=storage_context.vector_store,
-        embed_model=get_embedding_model()
+    retriever = index.as_retriever(
+        similarity_top_k=3
     )
 
-    retriever = VectorIndexRetriever(
-        index=index,
-        similarity_top_k=similarity_top_k
+    response_synthesizer = get_response_synthesizer(
+        text_qa_template=qa_prompt
     )
 
-    query_engine = RetrieverQueryEngine(
+    return RetrieverQueryEngine(
         retriever=retriever,
-        node_postprocessors=[
-            SimilarityPostprocessor(similarity_cutoff=similarity_cutoff)
-        ]
+        response_synthesizer=response_synthesizer
     )
-
-    return query_engine

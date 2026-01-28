@@ -17,3 +17,4 @@ Settings.embed_model = OllamaEmbedding(
 # Optional but good practice
 Settings.chunk_size = 512
 Settings.chunk_overlap = 50
+settings.vector_db_path = "./data/chroma"
