@@ -31,5 +31,5 @@ def ingest_documents(
         embed_model=embed_model
     )
 
-    index.storage_context.persist()
+    # index.storage_context.persist()
     return index
