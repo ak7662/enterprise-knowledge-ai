@@ -6,3 +6,12 @@ def get_embedding_model():
         model_name=settings.embedding_model,
         base_url=settings.ollama_base_url
     )
+
+
+# from llama_index.embeddings.ollama import OllamaEmbedding
+
+
+# def get_embedding_model():
+#     return OllamaEmbedding(
+#         model_name="nomic-embed-text"
+#     )
