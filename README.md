@@ -51,3 +51,47 @@ enterprise-knowledge-ai/
 ├── docs/
 │   └── architecture.md
 └── README.md
+
+
+
+By the end of Step 2, you will have:
+
+Real document ingestion (PDF / DOCX)
+
+Cleaned, normalized text
+
+Smart chunking (not naive splitting)
+
+Local embeddings ready for vector storage
+
+A pipeline that scales beyond demos
+
+This is where real RAG engineering starts.
+
+Why Step 2 Is Critical (Interview Perspective)
+
+Most candidates:
+
+load → split → embed ❌
+
+You will:
+
+Normalize text
+
+Preserve semantic boundaries
+
+Control chunk size + overlap
+
+Prepare metadata for citations
+
+Design for multiple documents & users
+
+This is senior-level thinking.
+
+
+Document
+ → Loader (PDF/DOCX)
+ → Text Cleaning
+ → Chunking Strategy
+ → Embedding (local)
+ → Ready for Vector DB

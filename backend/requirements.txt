@@ -1,18 +1,14 @@
 fastapi
 uvicorn
 python-dotenv
-pydantic
 loguru
 
-# GenAI
-langchain
-llama-index
-openai
-anthropic
+pydantic>=2.0
+pydantic-settings
 
-# Vector DB
+# LlamaIndex
+llama-index-core
+llama-index-embeddings-ollama
+llama-index-readers-file
+
 chromadb
-
-# File handling
-pypdf
-python-docx
